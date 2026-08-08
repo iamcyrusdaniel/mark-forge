@@ -93,3 +93,9 @@ let updateLineNumbers = function(){
         lineCountDiv.append(lineNumberDiv);
     }
 }
+let scrollLineNumbers = function(){
+    editor.addEventListener("scroll", () => {
+        lineCountDiv.scrollTop = editor.scrollTop;
+    })
+}
+scrollLineNumbers();
