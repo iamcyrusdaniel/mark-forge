@@ -52,7 +52,9 @@ let renderMarkdown = function(){
     const content = document.getElementById("editor").value;
     let markdown = marked.parse(content);
     preview.innerHTML = markdown;
+    updateLineNumbers();
 }
+
 let draggingDivider = function(){
     let divider = document.getElementById("slider");
     let dragging = false;
@@ -76,3 +78,18 @@ let draggingDivider = function(){
 }
 draggingDivider();
 
+let lineCountDiv = document.querySelector("#lineCount");
+let updateLineNumbers = function(){
+    const lines = editor.value.split("\n");
+
+    lineCountDiv.innerHTML = "";
+
+    for(let i = 0; i < lines.length; i++){
+        let lineNumberDiv = document.createElement("div");
+        
+        let lineNumber = document.createElement("p");
+        lineNumber.innerText = (i + 1).toString();
+        lineNumberDiv.append(lineNumber);
+        lineCountDiv.append(lineNumberDiv);
+    }
+}
