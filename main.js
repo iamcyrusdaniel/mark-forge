@@ -53,3 +53,26 @@ let renderMarkdown = function(){
     let markdown = marked.parse(content);
     preview.innerHTML = markdown;
 }
+let draggingDivider = function(){
+    let divider = document.getElementById("slider");
+    let dragging = false;
+    let leftPanel = document.getElementsByClassName("left")[1];
+    divider.addEventListener("mousedown", () => {
+        dragging = true;
+    })
+    document.addEventListener("mouseup", () => {
+        dragging = false;
+    })
+    document.addEventListener("mousemove", (event) => {
+        if(dragging) {
+            leftPanel.style.width = Math.min(Math.max(parseInt(event.clientX + "px"), parseInt("200px")), parseInt((window.innerWidth - 200) + "px"));
+            document.body.style.userSelect = "none";
+            document.body.style.cursor = "grabbing";
+        } else {
+            document.body.style.userSelect = "initial";
+            document.body.style.cursor = "initial";
+        }
+    })
+}
+draggingDivider();
+
