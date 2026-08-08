@@ -24,6 +24,9 @@
     cursor: col-resize;
 }
 
+#preview * {
+    overflow-wrap: break-word;
+}
 
 #lineCount {
     overflow: hidden;
@@ -64,6 +67,7 @@
 
 .horizontalContainer .right {
     flex: 1;
+    min-width: 0;
 }
 
 .horizontalContainer {
