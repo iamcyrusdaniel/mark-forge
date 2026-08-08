@@ -8,7 +8,6 @@
     <body>
         <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
         <script src="main.js" type="module"></script>
-        <main>
         <header class="editorHeader">
             <div class="left">
                 <img src="" alt="">
@@ -20,10 +19,18 @@
                 <button>Log In</button>
             </div>
         </header>
+        <main>
+            <div class="horizontalContainer">
                 <div id="lineCount"></div>
+                <div class="left">
+                    <textarea name="" id="editor" placeholder="hello"></textarea>
+                </div>
                 <div id="slider"></div>
+                <div class="right">
+                    <div id="background"></div>
+                    <div id="preview"></div>
+                <div id="content"></div>
             </div>
-            <div id="content"></div>
         </main>
     </body>
 </html>
