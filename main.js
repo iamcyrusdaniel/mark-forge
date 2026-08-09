@@ -1,10 +1,12 @@
 let editor = document.getElementById("editor");
 let preview = document.getElementById("preview");
 editor.addEventListener("input", () => {
+if(editor) editor.addEventListener("input", () => {
     renderMarkdown();
 })
 editor.addEventListener("keydown", (event) => {
     if(event.ctrlKey == true  && event.key == "b") {
+if(editor) editor.addEventListener("keydown", (event) => {
         keyboardShortcut("**", "**");
     }
 });
@@ -60,6 +62,7 @@ let draggingDivider = function(){
     let dragging = false;
     let leftPanel = document.getElementsByClassName("left")[1];
     divider.addEventListener("mousedown", () => {
+    if(divider) divider.addEventListener("mousedown", () => {
         dragging = true;
     })
     document.addEventListener("mouseup", () => {
@@ -85,6 +88,7 @@ let updateLineNumbers = function(){
     lineCountDiv.innerHTML = "";
 
     for(let i = 0; i < lines.length; i++){
+    if(lineCountDiv) for(let i = 0; i < lines.length; i++){
         let lineNumberDiv = document.createElement("div");
         
         let lineNumber = document.createElement("p");
@@ -95,6 +99,7 @@ let updateLineNumbers = function(){
 }
 let scrollLineNumbers = function(){
     editor.addEventListener("scroll", () => {
+    if(editor) editor.addEventListener("scroll", () => {
         lineCountDiv.scrollTop = editor.scrollTop;
     })
 }
