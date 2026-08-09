@@ -104,3 +104,13 @@ let scrollLineNumbers = function(){
     })
 }
 scrollLineNumbers();
+
+let saveButton = document.getElementById("saveButton");
+let saveCode = function(){
+    if(saveButton) saveButton.addEventListener("click", () => {
+        window.localStorage.setItem("code", editor.value);
+        console.log(editor.value);
+    });
+}
+saveCode();
+
