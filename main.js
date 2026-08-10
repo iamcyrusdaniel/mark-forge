@@ -114,3 +114,24 @@ let saveCode = function(){
 }
 saveCode();
 
+let codePrompt = document.getElementById("prompt");
+let promptYes = document.getElementById("yes");
+let promptNo = document.getElementById("no");
+let savedCodePrompt = function(){
+    if (window.localStorage.getItem("code") !== window.localStorage.getItem("savedCode")) {
+        codePrompt.classList.remove("hidden");
+        promptYes.addEventListener("click", () => {
+            console.log("yes");
+            editor.value = window.localStorage.getItem("savedCode");
+            window.localStorage.setItem("code", window.localStorage.getItem("savedCode"));
+            codePrompt.classList.add("hidden");
+            renderMarkdown();
+        });
+        promptNo.addEventListener("click", () => {
+            console.log("no");
+            codePrompt.classList.add("hidden");
+        });
+    }
+}
+savedCodePrompt();
+
