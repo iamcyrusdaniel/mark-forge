@@ -1,6 +1,9 @@
 let editor = document.getElementById("editor");
 let preview = document.getElementById("preview");
 editor.addEventListener("input", () => {
+window.addEventListener("DOMContentLoaded", () => {
+    renderMarkdown();
+})
 if(editor) editor.addEventListener("input", () => {
     renderMarkdown();
 })
