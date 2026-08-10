@@ -139,3 +139,8 @@ let savedCodePrompt = function(){
 }
 savedCodePrompt();
 
+let loadCode = function(){
+    editor.value = window.localStorage.getItem("code") || "";
+};
+loadCode();
+
