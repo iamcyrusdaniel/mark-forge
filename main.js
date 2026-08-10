@@ -112,6 +112,10 @@ let saveCode = function(){
         console.log(editor.value);
     });
 }
+    window.addEventListener("pagehide", () => {
+        window.localStorage.setItem("savedCode", editor.value);
+    });
+};
 saveCode();
 
 let codePrompt = document.getElementById("prompt");
