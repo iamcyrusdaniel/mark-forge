@@ -1,0 +1,40 @@
+# Huge update! | Devlog #3
+
+I've actually done a lot on the website so far and I'll try to explain everything as concise as possible
+
+----
+
+## Features
+
+The editor is a lot more editor-like now!
+
+### 📐 Resizable divider
+Between the editor and preview, there's not a resizable divider!
+
+### 💾 Save button
+When you press save, it... saves... Why did I explain this
+
+### ⚠️ Unsaved changes warning
+It just warns you if you had unsaved changes since last time
+
+### 🔢 Linecount indicator
+Actually pretty happy with the implementation of this
+
+----
+
+## Issues I ran into
+
+It's kinda funny that if you search up an issue you're having, someone already had the issue before you and you can just look at the solution they were given
+
+### 💥 Resizable divider resizing self
+When any line of the preview exceeded the width of the preview, it would resize the preview till the point it fits properly, until eventually collapsing the divider entirely, I fixed this by applying min-width: 0 which prevents it from resizing
+
+### ↕️ Linecount not scrolling
+When scrolling, the linecount didn't follow, so I set the linecount to scroll with the textarea element using a JS property called "scrollTop"
+
+### 😵 Textarea cursor fighting divider cursor
+When dragging the divider, it wouldn't stay as the grabbing icon since it would hover over the textarea element, so I had to go and fix it so that they wouldn't override each other
+
+----
+
+Overall I'm happy with my progress and I'm actually finishing things up a lot faster than on my first project! Stay tuned for the next devlog! 🚀
