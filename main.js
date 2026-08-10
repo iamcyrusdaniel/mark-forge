@@ -147,3 +147,17 @@ let loadCode = function(){
 };
 loadCode();
 
+let settingsButton = document.getElementById("settingsButton");
+let settingsMenu = document.getElementById("settingsMenu");
+let settingsCloseButton = document.getElementById("settingsClose");
+let toggleSettings = function(){
+    if(settingsButton){
+        settingsButton.addEventListener("click", () => {
+            settingsMenu.classList.remove("hidden");
+        });
+        settingsCloseButton.addEventListener("click", () => {
+            settingsMenu.classList.add("hidden"); 
+        })
+    }
+};
+toggleSettings();
