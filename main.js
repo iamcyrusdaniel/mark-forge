@@ -210,3 +210,17 @@ let toggleSettings = function(){
     }
 };
 toggleSettings();
+
+let settingsOptions = Array.from(document.getElementsByClassName("settingsDropdown"));
+let lastMenu = null;
+let loadSettings = function(){
+    settingsOptions.forEach(dropdown => {
+        dropdown.firstElementChild.addEventListener("click", () => {
+            dropdown.lastElementChild.classList.remove("hidden");
+            if(lastMenu) lastMenu.classList.add("hidden"); 
+            lastMenu = dropdown.lastElementChild;
+        });
+    });
+};
+loadSettings();
+

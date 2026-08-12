@@ -99,3 +99,48 @@ header .right {
     overflow: hidden;
 }
 
+
+#settingsMenu {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    height: fit-content;
+    width: fit-content;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-color: rgb(43, 49, 56);
+    color: rgb(158, 172, 255);
+}
+
+.selected {
+    color: aquamarine;
+}
+
+.settingsDropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.settingsDropdown button {
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    top: 20px;
+}
+
+.reversed {
+    top: initial;
+    bottom: 20px;
+}
+
+.dropdown > li {
+    background-color: rgb(43, 49, 56);
+    list-style: none;
+}
+
+.dropdown > li:not(:first-child) {
+    border-top: 1px solid rgb(39, 39, 50);
+}
