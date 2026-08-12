@@ -1,0 +1,5 @@
+# Editor Almost Done! | Devlog #4
+
+Hey everyone! I've finished most of the editor features. Compared to my first project, I've been able to churn out updates and finish this a lot faster so that's something I'm happy about. I now just need to style everything and make a home page!
+
+So far I've added a settings menu with dropdown menus and also made the code more stable on different browsers, as well as the fact I spent 2 hours... making my text formatting shortcut apply properly and read all the formatting before making a decision (before it was being really weird and adding lots of the same formatting)
