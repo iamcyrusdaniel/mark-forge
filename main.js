@@ -7,10 +7,22 @@ window.addEventListener("DOMContentLoaded", () => {
 if(editor) editor.addEventListener("input", () => {
     renderMarkdown();
 })
-editor.addEventListener("keydown", (event) => {
-    if(event.ctrlKey == true  && event.key == "b") {
 if(editor) editor.addEventListener("keydown", (event) => {
+    if(event.ctrlKey && event.key.toLowerCase() == "b") {
+        event.preventDefault();
         keyboardShortcut("**", "**");
+    }
+    if(event.ctrlKey && event.key.toLowerCase() == "k") {
+        event.preventDefault();
+        keyboardShortcut("[", "]()");
+    }
+    if(event.ctrlKey && event.shiftKey && event.key.toLowerCase() == "s") {
+        event.preventDefault();
+        keyboardShortcut("~~", "~~");
+    }
+    if(event.ctrlKey && event.key.toLowerCase() == "i") {
+        event.preventDefault();
+        keyboardShortcut("_", "_");
     }
 });
 
@@ -21,24 +33,49 @@ let keyboardShortcut = function(symbolStart, symbolEnd) {
 let wrapSelection = function(before, after) {
     const start = editor.selectionStart;
     const end = editor.selectionEnd;
-    
-    if(editor.value.substring(start - before.length, start) === before && editor.value.substring(end, end + after.length) === after) {
-        console.log("works");
-        const selectedText = editor.value.substring(start, end);
-        editor.value =
-            editor.value.substring(0, start - before.length)
-            + ""
-            + selectedText
-            + ""
-            + editor.value.substring(end + after.length);
+    let i = 1;
+    let startString = "";
+    console.log(editor.value[start - i]);
+    while(
+        editor.value[start - i] == "~"
+        || editor.value[start - i] == "*"
+        || editor.value[start - i] == "_"
+    ){
+        startString += editor.value[start - i];
+        i += 1;
+    }
+    startString = startString.split("").reverse().join("");
+    console.log(startString);
+    let endString = "";
+    let j = 0;
+    while(
+        editor.value[end + j] == "~"
+        || editor.value[end + j] == "*"
+        || editor.value[end + j] == "_"
+    ){
+        endString += editor.value[end + j];
+        j += 1;
+    }
+    const hasWrapper =
+    startString.includes(before) &&
+    endString.includes(after);
+    const selectedText = editor.value.substring(start, end);
+    let beforeIndex = startString.lastIndexOf(before);
+    let afterIndex = endString.indexOf(after);
+    let editorBeforeIndex = start - startString.length + beforeIndex;
+    let editorAfterIndex = end + afterIndex;
+    if(hasWrapper) {
+        editor.value = 
+            editor.value.substring(0, editorBeforeIndex)
+            + editor.value.substring(editorBeforeIndex + before.length, editorAfterIndex)
+            + editor.value.substring(editorAfterIndex + after.length);
         editor.setSelectionRange(
-            start - after.length,
+            start - before.length,
             end - before.length
         )
         renderMarkdown();
-    } else {
+    } else if(before != "`"){
         const selectedText = editor.value.substring(start, end);
-        console.log("1", editor.value.substring(0, start),"2", before,"3", selectedText,"4", after,"5", editor.value.substring(selectedText.length + after.length, end));
         editor.value =
             editor.value.substring(0, start)
             + before
@@ -50,6 +87,18 @@ let wrapSelection = function(before, after) {
             end + before.length
         )
         renderMarkdown();
+    } else {
+        const selectedText = editor.value.substring(start, end);
+        editor.value =
+            editor.value.substring(0, start - startString.length)
+            + before
+            + selectedText
+            + after
+            + editor.value.substring(end + endString.length);
+        editor.setSelectionRange(
+            start + before.length,
+            end + before.length
+        )
     }
 }
 
