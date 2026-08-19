@@ -99,6 +99,15 @@ header .right {
     overflow: hidden;
 }
 
+#prompt {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    background-color: rgb(43, 49, 56);
+    color: rgb(158, 172, 255);
+    z-index: 1;
+}
 
 #settingsMenu {
     position: fixed;
